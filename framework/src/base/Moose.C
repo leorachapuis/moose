@@ -97,6 +97,7 @@ addActionTypes(Syntax & syntax)
   registerMooseObjectTask("setup_mesh",                   MooseMesh,              false);
   registerMooseObjectTask("init_mesh",                    MooseMesh,              false);
   registerMooseObjectTask("add_mesh_modifier",            MeshModifier,           false);
+  registerMooseObjectTask("add_mesh_generator",           MeshGenerator,           false);
 
   registerMooseObjectTask("add_kernel",                   Kernel,                 false);
   appendMooseObjectTask  ("add_kernel",                   EigenKernel);
@@ -161,6 +162,7 @@ addActionTypes(Syntax & syntax)
   registerTask("add_variable", false);
 
   registerTask("execute_mesh_modifiers", false);
+  registerTask("execute_mesh_generators", true);
   registerTask("uniform_refine_mesh", false);
   registerTask("prepare_mesh", false);
   registerTask("add_geometric_rm", true);
@@ -222,6 +224,8 @@ addActionTypes(Syntax & syntax)
                            "(common_output)"
                            "(set_global_params)"
                            "(setup_recover_file_base)"
+                           "(add_mesh_generator)"
+                           "(execute_mesh_generators)"
                            "(check_copy_nodal_vars)"
                            "(setup_mesh)"
                            "(add_partitioner)"
@@ -378,6 +382,7 @@ associateSyntaxInner(Syntax & syntax, ActionFactory & /*action_factory*/)
   //  registerSyntaxTask("SetupMeshCompleteAction", "Mesh", "setup_mesh_complete");
   registerSyntax("CreateDisplacedProblemAction", "Mesh");
   registerSyntax("AddMeshModifierAction", "MeshModifiers/*");
+  registerSyntax("AddMeshGeneratorAction", "MeshGenerators/*");
   registerSyntax("AddMortarInterfaceAction", "Mesh/MortarInterfaces/*");
 
   registerSyntax("AddFunctionAction", "Functions/*");

@@ -409,7 +409,7 @@ enum class RelationshipManagerType : unsigned char
 };
 
 std::string stringify(const Moose::RelationshipManagerType & t);
-}
+} // namespace Moose
 
 namespace libMesh
 {
@@ -420,7 +420,7 @@ print_helper(std::ostream & os, const Moose::RelationshipManagerType * param)
   // Specialization so that we don't print out unprintable characters
   os << Moose::stringify(*param);
 }
-}
+} // namespace libMesh
 
 template <>
 struct enable_bitmask_operators<Moose::RelationshipManagerType>
@@ -515,5 +515,8 @@ DerivativeStringClass(MaterialName);
 
 /// Tag Name
 DerivativeStringClass(TagName);
+
+/// Name of MeshGenerators
+DerivativeStringClass(MeshGeneratorName);
 
 #endif // MOOSETYPES_H
